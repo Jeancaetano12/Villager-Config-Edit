@@ -49,9 +49,9 @@ public class Main {
 
         // Codigo de saída para sumonar a ser copiado
         System.out.println("Copie o codigo e cole o codigo abaixo para gerar um Villager com as customizações acima: \n");
-        if (villager.getAi() == "") {
+        if (villager.getAi() == "") { // Menssagem para NPC com IA
             System.out.println("/summon minecraft:villager ~ ~ ~ {Rotation:" + villager.getDirecao() + "}\n");
-        } else {
+        } else {    // Menssagem para NPC sem IA
             System.out.println("/summon minecraft:villager ~ ~ ~ {" + villager.getAi() + ",Rotation:" + villager.getDirecao() + "}\n");
         }    
     }

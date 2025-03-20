@@ -47,10 +47,13 @@ public class Main {
         SummonVillager villager = new SummonVillager(); // Criando o objeto já pedindo a direção
         System.out.println("O aldeão está olhando para: " + villager.getDirecao() + "\nCom a IA: " + villager.getAi());
 
-        // Codigo de saída a ser copiado
+        // Codigo de saída para sumonar a ser copiado
         System.out.println("Copie o codigo e cole o codigo abaixo para gerar um Villager com as customizações acima: \n");
-        System.out.println("/summon minecraft:villager ~ ~ ~ {" + villager.getAi() + ",Rotation:" + villager.getDirecao() + "}\n");
-
+        if (villager.getAi() == "") {
+            System.out.println("/summon minecraft:villager ~ ~ ~ {Rotation:" + villager.getDirecao() + "}\n");
+        } else {
+            System.out.println("/summon minecraft:villager ~ ~ ~ {" + villager.getAi() + ",Rotation:" + villager.getDirecao() + "}\n");
+        }    
     }
 
 }

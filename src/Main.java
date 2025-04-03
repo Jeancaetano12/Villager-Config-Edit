@@ -5,9 +5,6 @@ class SummonVillager {
     int vAi;
     int vSpawn;
     boolean bTrava = true;
-    int vReiniciar;
-    boolean bTrava2 = true;
-    int vConfirm;
     
     // Construtor que já lê e define a direção
     public SummonVillager() {
@@ -59,21 +56,26 @@ class SummonVillager {
             return "Valor inválido para AI"; // Caso vAi tenha um valor inesperado
         }
     }
-    // Método para ler a variavel de REINICIO
+}
+// Classe pra tratar de métodos usados pra reiniciar processos
+class Reinicio {
+    int vReiniciar;
+    boolean bTrava2 = true;
+    int vConfirm;
+
+    // Método para ler a variavel vReiniciar
     public int lerREINICIAR() {
         return vReiniciar;
     }
-    // Método para gravar na variavel de REINICIO
+    // Método para gravar na variavel de vReiniciar
     public void setREINICIAR() {
         Scanner input = new Scanner(System.in);
         while (bTrava2) {
             System.out.println("Você quer refazer o processo? (0 = Sim, 1 = Não)");
             this.vConfirm = input.nextInt();
-            if (vConfirm == 0) {
-                bTrava2 = !bTrava2;
-                break;
-            } else if (vConfirm == 1) {
-                bTrava2 = !bTrava2;
+            if (vConfirm == 0 || vConfirm == 1) {
+                vReiniciar = vConfirm;
+                bTrava2 = false;
                 break;
             } else {
                 System.out.println("Digite um valor valido");
@@ -81,21 +83,21 @@ class SummonVillager {
         }
     }
 }
-
 public class Main {
     public static void main(String[] args) {
+        Reinicio reiniciar = new Reinicio(); // Objeto usado para funções de reinicio
         SummonVillager villager = new SummonVillager(); // Criando o objeto já pedindo a direção
             if (villager.lerSpawn() == 0) {
             System.out.println("O aldeão está olhando para: " + villager.getDirecao() + "\nCom a IA: " + villager.getAi());
             // Codigo de saída para sumonar a ser copiado
             System.out.println("Copie o codigo e cole o codigo abaixo para gerar um Villager com as customizações acima: \n");
-            if (villager.getAi() == "") { // Menssagem para NPC com IA
+            if (villager.getAi().isEmpty()) { // Menssagem para NPC com IA
                 System.out.println("/summon minecraft:villager ~ ~ ~ {Rotation:" + villager.getDirecao() + "}\n");
             } else {    // Menssagem para NPC sem IA
                 System.out.println("/summon minecraft:villager ~ ~ ~ {" + villager.getAi() + ",Rotation:" + villager.getDirecao() + "}\n");
                 
-                villager.setREINICIAR();
-                if (villager.lerREINICIAR() == 1) {
+                reiniciar.setREINICIAR();
+                if (reiniciar.lerREINICIAR() == 1) {
                     System.exit(0);
                 } 
             }
@@ -104,8 +106,8 @@ public class Main {
 
 
 
-            villager.setREINICIAR();
-            if (villager.lerREINICIAR() == 1) {
+            reiniciar.setREINICIAR();
+            if (reiniciar.lerREINICIAR() == 1) {
                 System.exit(0);
             } 
         }

@@ -5,10 +5,9 @@ class SummonVillager {
     int vAi;
     int vSpawn;
     boolean bTrava = true;
-    
+    Scanner input = new Scanner(System.in);
     // Construtor que já lê e define a direção
     public SummonVillager() {
-        Scanner input = new Scanner(System.in);
         while (bTrava == true) {
             System.out.println("Você quer Spawnar um villager do zero? (0 = Sim, 1 = Não)");
             this.vSpawn = input.nextInt();
@@ -82,19 +81,39 @@ class Reinicio {
         }
     }
 }
+class Objeto {
+    Scanner input = new Scanner(System.in);
+    String vObjeto; 
+    // Método para gravar o nome do Objeto
+    public void setObjeto() {
+        System.out.print("Declare o Objeto: ");
+        this.vObjeto = input.nextLine();
+        System.out.printf("Objeto salvo como: %s%s", vObjeto, "\n");
+    }
+    // Método para ler o nome do Objeto
+    public String lerObjeto() {
+        return vObjeto;
+    }
+}
 public class Main {
     public static void main(String[] args) {
         Reinicio reiniciar = new Reinicio(); // Objeto usado para funções de reinicio
         do {
             SummonVillager villager = new SummonVillager(); // Criando o objeto já pedindo a direção
-        
-        
+            // Verifica de onde começa o código
             if (villager.lerSpawn() == 0) {
             System.out.println("O aldeão está olhando para: " + villager.getDirecao() + "\nCom a IA: " + villager.getAi());
             // Codigo de saída para sumonar a ser copiado
             System.out.println("Copie o codigo e cole o codigo abaixo para gerar um Villager com as customizações acima: \n");
             if (villager.getAi().isEmpty()) { // Menssagem para NPC com IA
                 System.out.println("/summon minecraft:villager ~ ~ ~ {Rotation:" + villager.getDirecao() + "}\n");
+                Objeto nomeObjeto = new Objeto();
+                // Criando um objeto para referenciar
+                System.out.println("Primeiro você precisa criar um OBJETO para se referenciar a esse villager: ");
+                nomeObjeto.setObjeto();
+                // Imprimindo o codigo para criar o objeto interativo
+                System.out.println("Copie e cole o codigo abaixo para começar a criação de dialogo: \n");
+                System.out.println("/scoreboard objectives add " + nomeObjeto.lerObjeto() + " minecraft.custom:minecraft.talked_to_villager" + "\n");
                 // Chamando verificação de reiniciar
                 reiniciar.setREINICIAR();
                 if (reiniciar.lerREINICIAR() == 1) {
@@ -103,6 +122,14 @@ public class Main {
                 }
             } else {    // Menssagem para NPC sem IA
                 System.out.println("/summon minecraft:villager ~ ~ ~ {" + villager.getAi() + ",Rotation:" + villager.getDirecao() + "}\n");
+                Objeto nomeObjeto = new Objeto();
+                // Criando um objeto para referenciar
+                System.out.println("Primeiro você precisa criar um OBJETO para se referenciar a esse villager: ");
+                nomeObjeto.setObjeto();
+                // Imprimindo o codigo para criar o objeto interativo
+                System.out.println("Copie e cole o codigo abaixo para começar a criação de dialogo: \n");
+                System.out.println("/scoreboard objectives add " + nomeObjeto.lerObjeto() + " minecraft.custom:minecraft.talked_to_villager" + "\n");
+
                 // Chamando verificação de reiniciar
                 reiniciar.setREINICIAR();
                 if (reiniciar.lerREINICIAR() == 1) {
@@ -110,8 +137,15 @@ public class Main {
                     System.exit(0);
                 }
             }
+            // Verifica de onde começa o código
         } else if (villager.lerSpawn() == 1) {
-            System.out.println("Em construção");
+            Objeto nomeObjeto = new Objeto();
+            // Criando um objeto para referenciar
+            System.out.println("Primeiro você precisa criar um OBJETO para se referenciar a esse villager: ");
+            nomeObjeto.setObjeto();
+            // Imprimindo o codigo para criar o objeto interativo
+            System.out.println("Copie e cole o codigo abaixo para começar a criação de dialogo: \n");
+            System.out.println("/scoreboard objectives add " + nomeObjeto.lerObjeto() + " minecraft.custom:minecraft.talked_to_villager" + "\n");
             // Chamando verificação de reiniciar
             reiniciar.setREINICIAR();
             if (reiniciar.lerREINICIAR() == 1) {
@@ -120,6 +154,6 @@ public class Main {
             }
         }
     } while (reiniciar.lerREINICIAR() == 0);
-        System.out.println("Encerrando programa...");
+        System.out.println("Loop caiu no tratamento de saida errado... (reiniciar.lerREINICIAR() == 0);");
     }
 }

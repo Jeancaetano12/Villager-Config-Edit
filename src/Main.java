@@ -70,12 +70,11 @@ class Reinicio {
     // Método para gravar na variavel de vReiniciar
     public void setREINICIAR() {
         Scanner input = new Scanner(System.in);
-        while (bTrava2) {
+        while (true) {
             System.out.println("Você quer refazer o processo? (0 = Sim, 1 = Não)");
             this.vConfirm = input.nextInt();
             if (vConfirm == 0 || vConfirm == 1) {
                 vReiniciar = vConfirm;
-                bTrava2 = false;
                 break;
             } else {
                 System.out.println("Digite um valor valido");
@@ -86,30 +85,41 @@ class Reinicio {
 public class Main {
     public static void main(String[] args) {
         Reinicio reiniciar = new Reinicio(); // Objeto usado para funções de reinicio
-        SummonVillager villager = new SummonVillager(); // Criando o objeto já pedindo a direção
+        do {
+            SummonVillager villager = new SummonVillager(); // Criando o objeto já pedindo a direção
+        
+        
             if (villager.lerSpawn() == 0) {
             System.out.println("O aldeão está olhando para: " + villager.getDirecao() + "\nCom a IA: " + villager.getAi());
             // Codigo de saída para sumonar a ser copiado
             System.out.println("Copie o codigo e cole o codigo abaixo para gerar um Villager com as customizações acima: \n");
             if (villager.getAi().isEmpty()) { // Menssagem para NPC com IA
                 System.out.println("/summon minecraft:villager ~ ~ ~ {Rotation:" + villager.getDirecao() + "}\n");
-            } else {    // Menssagem para NPC sem IA
-                System.out.println("/summon minecraft:villager ~ ~ ~ {" + villager.getAi() + ",Rotation:" + villager.getDirecao() + "}\n");
-                
+                // Chamando verificação de reiniciar
                 reiniciar.setREINICIAR();
                 if (reiniciar.lerREINICIAR() == 1) {
+                    System.out.println("Fechando o programa...");
                     System.exit(0);
-                } 
+                }
+            } else {    // Menssagem para NPC sem IA
+                System.out.println("/summon minecraft:villager ~ ~ ~ {" + villager.getAi() + ",Rotation:" + villager.getDirecao() + "}\n");
+                // Chamando verificação de reiniciar
+                reiniciar.setREINICIAR();
+                if (reiniciar.lerREINICIAR() == 1) {
+                    System.out.println("Fechando o programa...");
+                    System.exit(0);
+                }
             }
         } else if (villager.lerSpawn() == 1) {
             System.out.println("Em construção");
-
-
-
+            // Chamando verificação de reiniciar
             reiniciar.setREINICIAR();
             if (reiniciar.lerREINICIAR() == 1) {
+                System.out.println("Fechando o programa...");
                 System.exit(0);
-            } 
+            }
         }
+    } while (reiniciar.lerREINICIAR() == 0);
+        System.out.println("Encerrando programa...");
     }
 }

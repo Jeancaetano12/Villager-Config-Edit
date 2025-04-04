@@ -101,10 +101,10 @@ class Objeto {
     }
     // Método para REFERENCIAR o Villager spawnado no código e definir o nome escrito em tela
     public void setNomeCodigo() {
-        System.out.print("Digite o nome a ser REFERENCIADO para esse Villager no código: ");
+        System.out.print("Digite o nome da sua ENTIDADE Villager (nome que aparece em cima dele): ");
         this.vNomeCodigo = input.nextLine();
         System.out.printf("Nome salvo no código como: %s%s", vNomeCodigo, "\n");
-        System.out.print("Digite o nome que irá APARECER no TEXTO para esse Villager: ");
+        System.out.print("Digite o nome que irá EXIBIR no CHAT para esse Villager: ");
         this.vNome = input.nextLine();
         System.out.printf("Nome que será exibido: %s%s", vNome, "\n");
     }
@@ -150,11 +150,41 @@ class Objeto {
     public void setMsg() {
         System.out.println("O que o Villager em questão vai dizer?");
         this.vMsg = input.nextLine();
-        System.out.printf("O Villager vai dizer:\n%s", vMsg);
+        System.out.printf("O Villager vai dizer:\n%s%s", vMsg, "\n");
     }
     // Método para ler a Mensagem exibida
     public String lerMsg() {
         return vMsg;
+    }
+    // Método para gravar a cor da Mensagem
+    public void setCorMsg() {
+        System.out.print("Qual cor a Mensagem deve ter?\n(0 = Branco, 1 = Dourado, 2 = Vermelho, 3 = Azul, 4 = Roxo Escuro) \n");
+        this.vCorMsgInt = input.nextInt();
+        switch (vCorMsgInt) {
+            case 0:
+                vCorMsgString = "white"; // Branco
+                break;
+            case 1:
+                vCorMsgString = "gold"; // Dourado
+                break;
+            case 2:
+                vCorMsgString = "red"; // Vermelho
+                break;
+            case 3:
+                vCorMsgString = "blue"; // Azul
+                break;
+            case 4:
+                vCorMsgString = "dark_purple"; // Roxo Escuro
+                break;
+            default:
+                vCorMsgString = "white"; // branco
+                break;
+        }
+        System.out.printf("Cor selecionada: %s%s", vCorMsgString, "\n");  
+    }
+    // Método para ler a cor da mensagem
+    public String lerCorMsg() {
+        return vCorMsgString;
     }
 }
 public class Main {
@@ -188,7 +218,22 @@ public class Main {
                 nomeVillager.setCorNome();
                 // Definindo a Mensagem 
                 mensagemVillager.setMsg();
-
+                // Definindo a cor da Mensagem
+                mensagemVillager.setCorMsg();
+                System.out.println("Copie e cole o codigo abaixo em um Command Block Setado em: Repetição, e Sempre Ativo\n");
+                System.out.println("execute as @a[scores={" 
+                    + nomeObjeto.lerObjeto() 
+                    + "=1}] at @s run execute if entity @e[type=villager,name=\"" 
+                    + nomeVillager.lerNomeCodigo() 
+                    + "\",distance=..6] run tellraw @s [\"\",{\"text\":\"" 
+                    + nomeVillager.lerNome() 
+                    + " \",\"color\":\"" 
+                    + nomeVillager.lerCorNome() 
+                    + "\"},{\"text\":\"" 
+                    + mensagemVillager.lerMsg() 
+                    + "\",\"color\":\"" 
+                    + mensagemVillager.lerCorMsg() 
+                    + "\"}]\n");
                 // Chamando verificação de reiniciar
                 reiniciar.setREINICIAR();
                 if (reiniciar.lerREINICIAR() == 1) {
@@ -216,7 +261,22 @@ public class Main {
                 nomeVillager.setCorNome();
                 // Definindo a Mensagem 
                 mensagemVillager.setMsg();
-
+                // Definindo a cor da Mensagem
+                mensagemVillager.setCorMsg();
+                System.out.println("Copie e cole o codigo abaixo em um Command Block Setado em: Repetição, e Sempre Ativo\n");
+                System.out.println("execute as @a[scores={" 
+                    + nomeObjeto.lerObjeto() 
+                    + "=1}] at @s run execute if entity @e[type=villager,name=\"" 
+                    + nomeVillager.lerNomeCodigo() 
+                    + "\",distance=..6] run tellraw @s [\"\",{\"text\":\"" 
+                    + nomeVillager.lerNome() 
+                    + " \",\"color\":\"" 
+                    + nomeVillager.lerCorNome() 
+                    + "\"},{\"text\":\"" 
+                    + mensagemVillager.lerMsg() 
+                    + "\",\"color\":\"" 
+                    + mensagemVillager.lerCorMsg() 
+                    + "\"}]\n");
                 // Chamando verificação de reiniciar
                 reiniciar.setREINICIAR();
                 if (reiniciar.lerREINICIAR() == 1) {
@@ -243,7 +303,22 @@ public class Main {
             nomeVillager.setCorNome();
             // Definindo a Mensagem 
             mensagemVillager.setMsg();
-
+            // Definindo a cor da Mensagem
+            mensagemVillager.setCorMsg();
+            System.out.println("Copie e cole o codigo abaixo em um Command Block Setado em: Repetição, e Sempre Ativo\n");
+            System.out.println("execute as @a[scores={" 
+                + nomeObjeto.lerObjeto() 
+                + "=1}] at @s run execute if entity @e[type=villager,name=\"" 
+                + nomeVillager.lerNomeCodigo() 
+                + "\",distance=..6] run tellraw @s [\"\",{\"text\":\"" 
+                + nomeVillager.lerNome() 
+                + " \",\"color\":\"" 
+                + nomeVillager.lerCorNome() 
+                + "\"},{\"text\":\"" 
+                + mensagemVillager.lerMsg() 
+                + "\",\"color\":\"" 
+                + mensagemVillager.lerCorMsg() 
+                + "\"}]\n");
             // Chamando verificação de reiniciar
             reiniciar.setREINICIAR();
             if (reiniciar.lerREINICIAR() == 1) {

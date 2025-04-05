@@ -220,6 +220,7 @@ public class Main {
                 mensagemVillager.setMsg();
                 // Definindo a cor da Mensagem
                 mensagemVillager.setCorMsg();
+                // Mensagem de saida
                 System.out.println("Copie e cole o codigo abaixo em um Command Block Setado em: Repetição, e Sempre Ativo\n");
                 System.out.println("execute as @a[scores={" 
                     + nomeObjeto.lerObjeto() 
@@ -234,6 +235,8 @@ public class Main {
                     + "\",\"color\":\"" 
                     + mensagemVillager.lerCorMsg() 
                     + "\"}]\n");
+                System.out.println("Cole o codigo abaixo para resetar o dialogo em um 2° Command Block Setado em: Em Cadeia, e Sempre Ativo\n");
+                System.out.println("scoreboard players set @a[scores={" + nomeObjeto.lerObjeto() + "=1}] " + nomeObjeto.lerObjeto() + " 0\n");
                 // Chamando verificação de reiniciar
                 reiniciar.setREINICIAR();
                 if (reiniciar.lerREINICIAR() == 1) {
@@ -263,6 +266,7 @@ public class Main {
                 mensagemVillager.setMsg();
                 // Definindo a cor da Mensagem
                 mensagemVillager.setCorMsg();
+                // Mensagem de saida
                 System.out.println("Copie e cole o codigo abaixo em um Command Block Setado em: Repetição, e Sempre Ativo\n");
                 System.out.println("execute as @a[scores={" 
                     + nomeObjeto.lerObjeto() 
@@ -277,6 +281,8 @@ public class Main {
                     + "\",\"color\":\"" 
                     + mensagemVillager.lerCorMsg() 
                     + "\"}]\n");
+                System.out.println("Cole o codigo abaixo para resetar o dialogo em um 2° Command Block Setado em: Em Cadeia, e Sempre Ativo\n");
+                System.out.println("scoreboard players set @a[scores={" + nomeObjeto.lerObjeto() + "=1}] " + nomeObjeto.lerObjeto() + " 0\n");
                 // Chamando verificação de reiniciar
                 reiniciar.setREINICIAR();
                 if (reiniciar.lerREINICIAR() == 1) {
@@ -305,6 +311,7 @@ public class Main {
             mensagemVillager.setMsg();
             // Definindo a cor da Mensagem
             mensagemVillager.setCorMsg();
+            // Mensagem de saida
             System.out.println("Copie e cole o codigo abaixo em um Command Block Setado em: Repetição, e Sempre Ativo\n");
             System.out.println("execute as @a[scores={" 
                 + nomeObjeto.lerObjeto() 
@@ -319,6 +326,8 @@ public class Main {
                 + "\",\"color\":\"" 
                 + mensagemVillager.lerCorMsg() 
                 + "\"}]\n");
+            System.out.println("Cole o codigo abaixo para resetar o dialogo em um 2° Command Block Setado em: Em Cadeia, e Sempre Ativo\n");
+            System.out.println("scoreboard players set @a[scores={" + nomeObjeto.lerObjeto() + "=1}] " + nomeObjeto.lerObjeto() + " 0\n");
             // Chamando verificação de reiniciar
             reiniciar.setREINICIAR();
             if (reiniciar.lerREINICIAR() == 1) {
